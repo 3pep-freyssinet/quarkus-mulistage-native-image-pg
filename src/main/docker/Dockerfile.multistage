@@ -6,7 +6,10 @@
 ##
 ##
 ## Stage 1 : build with maven builder image with native capabilities
-FROM quay.io/quarkus/ubi-quarkus-graalvmce-builder-image:22.3-java17 AS build
+# marche en local, ne marche pas dans 'render.com'
+#FROM quay.io/quarkus/ubi-quarkus-graalvmce-builder-image:22.3-java17 AS build
+#marche dans 'render.com'
+FROM quay.io/quarkus/ubi-quarkus-native-image:22.3-java11 AS build
 COPY --chown=quarkus:quarkus mvnw /code/mvnw
 COPY --chown=quarkus:quarkus .mvn /code/.mvn
 COPY --chown=quarkus:quarkus pom.xml /code/
